@@ -31,7 +31,7 @@
 
 ## 2. Токены
 
-Источник — переменные Figma: «RMK Colors», «RMK Spacing» (`space/*`, `radius/*`), «RMK Layout» (режим Desktop 1440). Выгрузка в `src/styles/tokens.css` скриптом как в KMF (этап 2). В коде имя без префикса `color_`: `color_bg-navy` → `--bg-navy`.
+Источник — переменные Figma: «RMK Colors», «RMK Spacing» (`space/*`, `radius/*`), «RMK Layout» (режимы Desktop 1440 и Mobile 360). Выгрузка в `src/styles/tokens.css` скриптом как в KMF (этап 2). В коде имя без префикса `color_`: `color_bg-navy` → `--bg-navy`.
 
 | Токен | Значение | Где |
 |---|---|---|
