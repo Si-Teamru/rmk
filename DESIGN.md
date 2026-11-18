@@ -126,7 +126,7 @@ Mobile 360 по блокам: шапка — логотип + меню; перв
 
 ## 9. Иконки и ассеты
 
-**Шрифты** — свои файлы, без Google Fonts и CDN: `src/app/fonts/*.woff2` (латиница + кириллица), подключение `src/app/fonts.ts` через `next/font/local` (предзагрузка и запасной шрифт с `size-adjust` — без сдвига при загрузке). Собирает `npm run fonts -- <папка Hauora-*.otf> <Unbounded[wght].ttf>` (`scripts/fonts.py`): Hauora 400/500/700/800 из otf (в npm нет), Unbounded — variable 200–900 из google/fonts. В Unbounded нет неразрывного дефиса U+2011 — скрипт добавляет его на глиф `-`. Обе гарнитуры — OFL.
+**Шрифты** — свои файлы, без Google Fonts и CDN: `src/app/fonts/*.woff2` (латиница + кириллица), подключение `src/app/fonts.ts` через `next/font/local` (предзагрузка и запасной шрифт с `size-adjust` — без сдвига при загрузке). Собирает `npm run fonts -- <папка Hauora-*.otf> <Unbounded[wght].ttf>` (`scripts/fonts.py`): Hauora 400/500/700/800 из otf (в npm нет), Unbounded — variable 200–900 из google/fonts. В Unbounded нет неразрывного дефиса U+2011 — скрипт добавляет его на глиф `-`. Обе гарнитуры — OFL, тексты лицензий — `src/app/fonts/OFL-*.txt` (нужны при распространении).
 
 Заполнить: откуда брать иконки и фото, куда класть (`public/…`), обработка (форматы, размеры, сжатие). Картинки из `public` — через `asset()` (`src/lib/asset.ts`), иначе на Pages не будет префикса `/rmk`.
 
