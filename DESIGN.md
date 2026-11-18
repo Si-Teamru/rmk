@@ -73,19 +73,19 @@
 
 | Компонент Figma (id) | Компонент кода | Заметки |
 |---|---|---|
-| Logo `3011:1021` | — | нужен SVG логотипа от клиента |
-| Icon/arrow-up-right `3011:1037`, chevron-right `3011:1039`, arrow-right `3011:1041`, arrow-up `3011:1043` | — | inline SVG, `currentColor` |
-| Media Logos `3011:1048` | — | SVG изданий |
-| Button / Primary `3034:334` (State) | — | высота 48; Default, Hover, Focus, Pressed |
-| Button / More `3034:352` (State) | — | высота 40: полоса + круг, вся кнопка — ссылка; Default, Hover, Focus, Pressed |
-| Icon Button / Slider `3012:290` (Direction × State) | — | Default, Hover, Focus, Disabled; в макете обе стрелки Disabled |
-| Number Badge `3012:294` | — | 40×40 |
-| Case Card `3014:268` | — | 400×256 (в ряду — по самой высокой), r24, поля 16; выделения в описании — Unbounded |
-| Direction Item `3014:300` (Fill=None/Glass) | — | высота по содержимому, r8, поля 16/8 |
-| Direction Card `3014:304` | — | 400×428, r24, список с полем 16; 3 пункта, второй — Glass |
-| Nav Link `3035:339` (State), Header / Desktop `3014:342` | — | шапка 56, меню с зазором 24, кнопки 40 в рамке r8; Nav Link — Default, Hover, Focus |
-| Header / Phone `3035:355`, Button / Header `3035:364` (State) | — | телефон и «Записаться» в рамке шапки; Default, Hover, Focus (+ Pressed у кнопки) |
-| Header / Mobile `3019:507`, Icon Button / Menu `3034:375` (State), Icon/menu `3019:499` | — | предложение: логотип + кнопка меню 48, шапка 56; кнопка — Default, Hover, Focus, Pressed; само меню не нарисовано |
+| Logo `3011:1021` | `public/images/logo.svg` в `Header` | экспорт из Figma (текст в кривых, фон доски вычищен); заменить файлом от клиента |
+| Icon/arrow-up-right `3011:1037`, chevron-right `3011:1039`, arrow-right `3011:1041`, arrow-up `3011:1043`, menu `3019:499` | `Icon` (`src/components/ui.tsx`) | пути скачанных SVG инлайном, `currentColor` |
+| Media Logos `3011:1048` | `public/images/media-logos.svg` в `Media` | пока один SVG из Figma; файлы изданий от клиента |
+| Button / Primary `3034:334` (State) | `ButtonPrimary` (`ui.tsx`) | высота 48; Default, Hover, Focus, Pressed |
+| Button / More `3034:352` (State) | `ButtonMore` (`ui.tsx`) | высота 40: полоса + круг, вся кнопка — ссылка; Default, Hover, Focus, Pressed |
+| Icon Button / Slider `3012:290` (Direction × State) | в `Team` | кейс один — кнопки `disabled`; Default, Hover, Focus, Disabled; в макете обе стрелки Disabled |
+| Number Badge `3012:294` | в `Cases` | 40×40 |
+| Case Card `3014:268` | `Cases` | 400×256 (в ряду — по самой высокой), r24, поля 16; выделения в описании — Unbounded |
+| Direction Item `3014:300` (Fill=None/Glass) | в `Solutions` | высота по содержимому, r8, поля 16/8 |
+| Direction Card `3014:304` | `Solutions` | 400×428, r24, список с полем 16; 3 пункта, второй — Glass |
+| Nav Link `3035:339` (State), Header / Desktop `3014:342` | `Header` (от 1280) | шапка 56, меню с зазором 24 (ниже 1440 — 16, иначе не влезает), кнопки 40 в рамке r8; Nav Link — Default, Hover, Focus |
+| Header / Phone `3035:355`, Button / Header `3035:364` (State) | в `Header` | телефон и «Записаться» в рамке шапки; Default, Hover, Focus (+ Pressed у кнопки) |
+| Header / Mobile `3019:507`, Icon Button / Menu `3034:375` (State), Icon/menu `3019:499` | `Header` (меньше 1280) | предложение: логотип + кнопка меню 48, шапка 56; кнопка — Default, Hover, Focus, Pressed; само меню не нарисовано — в коде временный `popover` со списком, согласовать |
 
 ## 5. Состояния и анимации
 
@@ -107,7 +107,7 @@
 
 ## 6. Адаптив
 
-Макеты 1440 и 360. Проверочные ширины: 360, 834, 1024, 1280, 1440, 1920. Брейкпоинт раскладки — уточнить на этапе вёрстки (ряды карточек 3 → 1).
+Макеты 1440 и 360. Проверочные ширины: 360, 834, 1024, 1280, 1440, 1920. Брейкпоинты (Tailwind): `md` 768 — мобильные стили текста (как в токенах), подписи СМИ в ряд, заголовок «Найдите решение» по центру, кнопки по содержимому; `lg` 1024 — карточки 3 в ряд, «Та самая компания» текст + карточка в ряд; `xl` 1280 — шапка desktop и первый экран с фото справа (ниже не помещаются). Выше 1440 вёрстка тянется на всю ширину, ограничения в макете нет.
 
 Mobile 360 по блокам: шапка — логотип + меню; первый экран — текст, кнопка во всю ширину, фото с картой ниже; СМИ — подпись над логотипами; кейсы, направления — столбиком, высота по содержимому; «Та самая компания» — фото сверху с затемнением, затем текст и карточка результата (подписи над цифрами); «Не нашли задачу?» — в колонку, кнопка во всю ширину. Ручных переносов (Shift+Enter) в макете нет — строки переносятся сами, висячие предлоги держит типограф.
 
@@ -128,7 +128,7 @@ Mobile 360 по блокам: шапка — логотип + меню; перв
 
 **Шрифты** — свои файлы, без Google Fonts и CDN: `src/app/fonts/*.woff2` (латиница + кириллица), подключение `src/app/fonts.ts` через `next/font/local` (предзагрузка и запасной шрифт с `size-adjust` — без сдвига при загрузке). Собирает `npm run fonts -- <папка Hauora-*.otf> <Unbounded[wght].ttf>` (`scripts/fonts.py`): Hauora 400/500/700/800 из otf (в npm нет), Unbounded — variable 200–900 из google/fonts. В Unbounded нет неразрывного дефиса U+2011 — скрипт добавляет его на глиф `-`. Обе гарнитуры — OFL, тексты лицензий — `src/app/fonts/OFL-*.txt` (нужны при распространении).
 
-Заполнить: откуда брать иконки и фото, куда класть (`public/…`), обработка (форматы, размеры, сжатие). Картинки из `public` — через `asset()` (`src/lib/asset.ts`), иначе на Pages не будет префикса `/rmk`.
+Иконки — инлайн в `Icon` (`ui.tsx`). Фото и SVG — `public/images/`: фото из Figma в WebP (Pillow, качество 80, портрет уменьшен до 900 px по ширине), SVG — экспорт узла. Первый экран — `fetchPriority="high"`, остальные лениво. Тексты главной — `src/data/home.ts`, выделение `**…**` (`Rich`). Картинки из `public` — через `asset()` (`src/lib/asset.ts`), иначе на Pages не будет префикса `/rmk`.
 
 ## 10. Проверка
 

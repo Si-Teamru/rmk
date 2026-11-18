@@ -13,10 +13,11 @@ const NBHY = '\u2011'
 
 const SHORT = String.raw`\p{L}{1,2}|для|без|под|над|при|про|или|изо|обо|ото|что|как`
 
+// `*` — маркер выделения `**…**` в src/data (разбирает <Rich>).
 export function typograph(text: string): string {
   return (
     text
-      .replace(new RegExp(String.raw`(?<=^|[\s(«"„])(${SHORT}) +`, 'giu'), `$1${NBSP}`)
+      .replace(new RegExp(String.raw`(?<=^|[\s(«"„*])(${SHORT}) +`, 'giu'), `$1${NBSP}`)
       .replace(/ +(же|ли|бы|ль|ж|б)(?=[\s.,!?;:…»)]|$)/giu, `${NBSP}$1`)
       .replace(/ +([—–])/g, `${NBSP}$1`)
       .replace(/(?<!\p{L})(\p{Lu}\.) +(?=\p{Lu})/gu, `$1${NBSP}`)

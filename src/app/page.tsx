@@ -1,11 +1,25 @@
-// Заглушка до вёрстки главной: проверка шрифтов, токенов и выкладки на Pages.
+import { Cases } from '@/components/home/Cases'
+import { Header } from '@/components/home/Header'
+import { Hero } from '@/components/home/Hero'
+import { Media } from '@/components/home/Media'
+import { Solutions } from '@/components/home/Solutions'
+import { Team } from '@/components/home/Team'
+
+// Главная: Figma EcKBc3G43tWwM3XtI2hZwi, desktop 3015:1016, mobile 3020:479.
 export default function Home() {
   return (
-    <main className="grid min-h-dvh place-content-center gap-6 bg-bg-navy px-container-padding text-text-inverse">
-      <h1 className="type-display uppercase">
-        Сайт <span className="text-accent-yellow">РМК</span> в&nbsp;разработке
-      </h1>
-      <p className="type-lead">Росмедконсалтинг</p>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Media />
+        <Cases />
+        {/* Team + Solutions 3016:1129: тёмный фон, белая секция заходит на него скруглением */}
+        <div className="overflow-clip bg-bg-navy">
+          <Team />
+          <Solutions />
+        </div>
+      </main>
+    </>
   )
 }
