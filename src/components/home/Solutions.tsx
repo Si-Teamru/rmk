@@ -23,7 +23,7 @@ export function Solutions() {
             </p>
           </div>
 
-          <div className="grid gap-grid-gutter lg:grid-cols-3">
+          <div className="grid gap-grid-gutter lg:grid-cols-3 lg:gap-x-8">
             {directions.map((d) => (
               <article
                 key={d.title}

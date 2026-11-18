@@ -12,7 +12,7 @@ export function Cases() {
   return (
     <section
       id="cases"
-      className="mx-auto grid max-w-page gap-grid-gutter px-container-padding pb-section-gap lg:grid-cols-3"
+      className="mx-auto grid max-w-page gap-grid-gutter px-container-padding pb-section-gap lg:grid-cols-3 lg:gap-x-8"
       aria-label="Кейсы"
     >
       {home.cases.map((c, i) => (
