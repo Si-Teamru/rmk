@@ -5,7 +5,7 @@
 При конфликте: макет в Figma (`get_design_context` / `get_metadata`) > этот файл > скриншот.
 Изменил дизайн-систему (компонент, токен, состояние, правило) — обнови этот файл в том же коммите.
 
-Заполнены §1–4, 6, 8; разделы с пометкой «заполнить» — по мере работы. Образец заполнения — `D:\si-team проекты\kmf\DESIGN.md`, шаблон — `D:\agent-hub\skills\figma-to-code\references\design-system-doc.md`.
+Заполнены §1–4, 6, 8, в §5 — состояния кнопок и ссылок; разделы с пометкой «заполнить» — по мере работы. Образец заполнения — `D:\si-team проекты\kmf\DESIGN.md`, шаблон — `D:\agent-hub\skills\figma-to-code\references\design-system-doc.md`.
 
 ## 0. Порядок работы — выполнять всегда
 
@@ -45,6 +45,8 @@
 | `bg-soft` | #edf1f9 | внутренние панели карточек |
 | `bg-glass` / `bg-navy-glass` | #fff 43% / #012149 77% | чётный пункт списка / плашка подписи на фото |
 | `border-subtle` | #012149 22% | разделители |
+| `accent-yellow-hover` / `accent-yellow-pressed` | #f2df00 / #e3d100 | жёлтые кнопки: наведение / нажатие |
+| `accent-blue-pressed` | #0c4db8 | тёмные кнопки: нажатие (наведение — `accent-blue`) |
 
 Близкие оттенки макета (#002048, #132a4e) сведены к `text-primary`.
 
@@ -74,19 +76,34 @@
 | Logo `3011:1021` | — | нужен SVG логотипа от клиента |
 | Icon/arrow-up-right `3011:1037`, chevron-right `3011:1039`, arrow-right `3011:1041`, arrow-up `3011:1043` | — | inline SVG, `currentColor` |
 | Media Logos `3011:1048` | — | SVG изданий |
-| Button / Primary `3012:262` | — | высота 48, Hover/Focus не нарисованы |
-| Button / More `3012:269` | — | высота 40: полоса + круг, вся кнопка — ссылка |
-| Icon Button / Slider `3012:290` (Direction × State) | — | Default — предложение, в макете обе стрелки Disabled |
+| Button / Primary `3034:334` (State) | — | высота 48; Default, Hover, Focus, Pressed |
+| Button / More `3034:352` (State) | — | высота 40: полоса + круг, вся кнопка — ссылка; Default, Hover, Focus, Pressed |
+| Icon Button / Slider `3012:290` (Direction × State) | — | Default, Hover, Focus, Disabled; в макете обе стрелки Disabled |
 | Number Badge `3012:294` | — | 40×40 |
 | Case Card `3014:268` | — | 400×256 (в ряду — по самой высокой), r24, поля 16; выделения в описании — Unbounded |
 | Direction Item `3014:300` (Fill=None/Glass) | — | высота по содержимому, r8, поля 16/8 |
 | Direction Card `3014:304` | — | 400×428, r24, список с полем 16; 3 пункта, второй — Glass |
-| Nav Link `3014:337`, Header / Desktop `3014:342` | — | шапка 56, меню с зазором 24, кнопки 40 в рамке r8 |
-| Header / Mobile `3019:507`, Icon Button / Menu `3019:504`, Icon/menu `3019:499` | — | предложение: логотип + кнопка меню 48, шапка 56; само меню не нарисовано |
+| Nav Link `3035:339` (State), Header / Desktop `3014:342` | — | шапка 56, меню с зазором 24, кнопки 40 в рамке r8; Nav Link — Default, Hover, Focus |
+| Header / Phone `3035:355`, Button / Header `3035:364` (State) | — | телефон и «Записаться» в рамке шапки; Default, Hover, Focus (+ Pressed у кнопки) |
+| Header / Mobile `3019:507`, Icon Button / Menu `3034:375` (State), Icon/menu `3019:499` | — | предложение: логотип + кнопка меню 48, шапка 56; кнопка — Default, Hover, Focus, Pressed; само меню не нарисовано |
 
 ## 5. Состояния и анимации
 
-Заполнить: длительности и кривые, hover/фокус/нажатие, поведение сложных блоков. Каждая анимация — с вариантом для `prefers-reduced-motion`.
+Состояния кнопок и ссылок нарисованы в ките вариантами `State=…` (18.11.2026, предложение — согласовать с клиентом):
+
+| Элемент | Hover | Focus | Pressed |
+|---|---|---|---|
+| Жёлтые кнопки (Primary, «Записаться») | `accent-yellow-hover`; у Primary стрелка сдвигается на 4 вправо | кольцо | `accent-yellow-pressed` |
+| Тёмные кнопки («Подробнее», меню) | `accent-blue` | кольцо | `accent-blue-pressed` |
+| Стрелка слайдера | заливка `bg-navy`, шеврон `text-inverse` | кольцо | — |
+| Nav Link / телефон в шапке | текст `accent-blue` / `accent-yellow` | кольцо | — |
+
+- **Кольцо фокуса** — одно на всё: 2 px `bg-white` + 2 px `accent-blue` снаружи, радиус = радиус элемента + отступ. В коде — `:focus-visible { box-shadow: 0 0 0 2px var(--bg-white), 0 0 0 4px var(--accent-blue) }` (видно и на белом, и на тёмно-синем). Только на `:focus-visible`, не на клик мышью.
+- Hover — только под `@media (hover: hover)`, на тач-экранах его нет.
+- Переход цвета — 150 мс `ease-out`; сдвиг стрелки — `transform`, при `prefers-reduced-motion: reduce` не двигается (цвет меняется).
+- Disabled — прозрачность 18 % (стрелка в начале или конце ряда), в коде `disabled` + `aria-disabled`.
+
+Заполнить: поведение сложных блоков (слайдер, меню, попапы).
 
 ## 6. Адаптив
 
