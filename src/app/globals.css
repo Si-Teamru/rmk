@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+
+@theme inline {
+  --font-sans: var(--font-hauora), system-ui, sans-serif;
+  --font-display: var(--font-unbounded), system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg-white);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* Не оставлять одно слово в последней строке (остальное — типограф, src/lib/typograph.ts). */
+  text-wrap: pretty;
+}
+
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+/* Кольцо фокуса — одно на всё (DESIGN.md §5): видно и на белом, и на тёмно-синем.
+   Прозрачный outline остаётся для режима высокой контрастности Windows, где тени не рисуются. */
+:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow:
+    0 0 0 2px var(--bg-white),
+    0 0 0 4px var(--accent-blue);
+}

@@ -1,0 +1,4 @@
+# Документы пишутся руками (таблицы, переносы) — Prettier их не трогает
+*.md
+package-lock.json
+src/styles/tokens.css

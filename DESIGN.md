@@ -31,7 +31,7 @@
 
 ## 2. Токены
 
-Источник — переменные Figma: «RMK Colors», «RMK Spacing» (`space/*`, `radius/*`), «RMK Layout» (режимы Desktop 1440 и Mobile 360). Выгрузка в `src/styles/tokens.css` скриптом как в KMF (этап 2). В коде имя без префикса `color_`: `color_bg-navy` → `--bg-navy`.
+Источник — переменные Figma: «RMK Colors», «RMK Spacing» (`space/*`, `radius/*`), «RMK Layout» (режимы Desktop 1440 и Mobile 360). Выгрузка: ответы `get_variable_defs` → `scripts/figma/variables.json` → `npm run tokens` → `src/styles/tokens.css` (руками не править). В коде: цвет без префикса `color_` (`color_bg-navy` → `--bg-navy`, классы `bg-bg-navy`, `text-text-primary`); `layout/*` → `--layout-*` с интерполяцией 360 → 1440 через `clamp()`, классы `px-container-padding`, `gap-grid-gutter`; `radius/24` → `rounded-24`; `shadow/card` → `shadow-card`; `space/*` — шкала Tailwind, она тоже 4 px (`space/24` = `p-6`).
 
 | Токен | Значение | Где |
 |---|---|---|
@@ -56,7 +56,7 @@
 **Вложенные скругления:** внешний радиус = внутренний + отступ до внешнего края. Карточка кейса r24 = кнопка r8 + поле 16; карточка направления r24 = пункт r8 + поле 16; карточка результата r24 = «О кейсе» r16 + поле 8; рамка кнопок в шапке r8 = кнопки r4 + поле 4; плашка «Не нашли задачу?» r16 = кнопка r8 + поле 8 (mobile: поле 16 → r24). Элемент вплотную к краю — радиус как у внешнего. В коде: `border-radius` внешнего = внутренний + `padding`.
 **Тень:** эффект `shadow/card` (x −3, y 5, размытие 19, чёрный 20%).
 
-**Типографика** — утилита = имя стиля без `Desktop/` и `text_`. Unbounded: `text_display` (34, капс — заголовки первого экрана и секций), `h3` 20, `h4` 14, `text_lead` 16, `text_stat-xl` 90, `text_stat-l` 64, `text_stat-unit` 24, `text_step-number` 14, `text_label` 12, `text_caption-display` 12. Hauora: `text_nav-link` 15, `text_button` 16, `text_button-s` 14, `text_card-title` 15, `text_body-m` 15, `text_body-s` 13, `text_body-s-medium` 13, `text_caption` 12, `text_author` 14. Межстрочный — в процентах (точные значения — в стилях Figma), подобран так, что высота строки около кратной 4: 16 → 150 %, 14 → 143 %, 13 → 123 % (desktop) / 154 % (mobile), 12 → 133 %. Mobile/* — те же имена: display 24, h3 18, lead 14, stat-xl 64, stat-l 48, stat-unit 20, остальное как на десктопе.
+**Типографика** — утилита `type-<стиль>` = имя стиля без `Desktop/` и `text_` (`type-display`, `type-body-m`): семейство, размер (интерполяция 360 → 1440), межстрочный и вес; межстрочный и вес Mobile/* — ниже 768. Капс и цвет — классами рядом. Unbounded: `text_display` (34, капс — заголовки первого экрана и секций), `h3` 20, `h4` 14, `text_lead` 16, `text_stat-xl` 90, `text_stat-l` 64, `text_stat-unit` 24, `text_step-number` 14, `text_label` 12, `text_caption-display` 12. Hauora: `text_nav-link` 15, `text_button` 16, `text_button-s` 14, `text_card-title` 15, `text_body-m` 15, `text_body-s` 13, `text_body-s-medium` 13, `text_caption` 12, `text_author` 14. Межстрочный — в процентах (точные значения — в стилях Figma), подобран так, что высота строки около кратной 4: 16 → 150 %, 14 → 143 %, 13 → 123 % (desktop) / 154 % (mobile), 12 → 133 %. Mobile/* — те же имена: display 24, h3 18, lead 14, stat-xl 64, stat-l 48, stat-unit 20, остальное как на десктопе.
 
 **Допустимые исключения:** градиенты-затемнения поверх фото (первый экран, «Та самая компания») — значения из макета; цвета логотипов СМИ.
 
@@ -126,11 +126,13 @@ Mobile 360 по блокам: шапка — логотип + меню; перв
 
 ## 9. Иконки и ассеты
 
-Заполнить: откуда брать иконки и фото, куда класть (`public/…`), обработка (форматы, размеры, сжатие).
+**Шрифты** — свои файлы, без Google Fonts и CDN: `src/app/fonts/*.woff2` (латиница + кириллица), подключение `src/app/fonts.ts` через `next/font/local` (предзагрузка и запасной шрифт с `size-adjust` — без сдвига при загрузке). Собирает `npm run fonts -- <папка Hauora-*.otf> <Unbounded[wght].ttf>` (`scripts/fonts.py`): Hauora 400/500/700/800 из otf (в npm нет), Unbounded — variable 200–900 из google/fonts. В Unbounded нет неразрывного дефиса U+2011 — скрипт добавляет его на глиф `-`. Обе гарнитуры — OFL.
+
+Заполнить: откуда брать иконки и фото, куда класть (`public/…`), обработка (форматы, размеры, сжатие). Картинки из `public` — через `asset()` (`src/lib/asset.ts`), иначе на Pages не будет префикса `/rmk`.
 
 ## 10. Проверка
 
-`npm run lint`, `npm run typecheck`, `npm run build`; скриншоты проверочных ширин; горизонтальная прокрутка с видимой полосой; Lighthouse (LCP, CLS, INP, доступность). Команды сверки с макетом — заполнить после каркаса.
+`npm run lint`, `npm run typecheck`, `npm run build`; скриншоты проверочных ширин; горизонтальная прокрутка с видимой полосой; Lighthouse (LCP, CLS, INP, доступность). Витрина собирается так же, как на Pages: `STATIC_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/rmk npm run build` (в Git Bash — с `MSYS_NO_PATHCONV=1`, иначе `/rmk` превращается в путь Windows). Команды сверки с макетом — заполнить с первыми блоками.
 
 ## 11. Грабли вёрстки
 

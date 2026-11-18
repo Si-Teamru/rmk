@@ -1,0 +1,251 @@
+/*
+ * Сгенерировано scripts/export-tokens.ts из Figma (EcKBc3G43tWwM3XtI2hZwi). Не редактировать вручную —
+ * обновить scripts/figma/variables.json и запустить `npm run tokens`.
+ */
+:root {
+  /* Цвета */
+  --accent-blue: #105edc;
+  --accent-blue-pressed: #0c4db8;
+  --accent-yellow: #ffec00;
+  --accent-yellow-hover: #f2df00;
+  --accent-yellow-pressed: #e3d100;
+  --bg-glass: #ffffff6e;
+  --bg-navy: #012149;
+  --bg-navy-glass: #012149c4;
+  --bg-navy-raised: #002552;
+  --bg-soft: #edf1f9;
+  --bg-white: #ffffff;
+  --border-subtle: #01214938;
+  --text-inverse: #ffffff;
+  --text-primary: #012149;
+  --text-secondary: #012149e5;
+
+  /* Раскладка: 360 → 1440 */
+  --layout-block-gap: clamp(24px, 16px + 2.2222vw, 48px);
+  --layout-container-padding: clamp(16px, -8px + 6.6667vw, 88px);
+  --layout-grid-gutter: clamp(16px, 13.3333px + 0.7407vw, 24px);
+  --layout-page-width: clamp(360px, 0px + 100vw, 1440px);
+  --layout-panel-padding: clamp(16px, 5.3333px + 2.963vw, 48px);
+  --layout-section-gap: clamp(56px, 48px + 2.2222vw, 80px);
+  --layout-wide-padding: clamp(8px, -2.6667px + 2.963vw, 40px);
+
+  /* Типографика */
+  --type-author-size: 14px;
+  --type-author-line-height: 1.14;
+  --type-author-weight: 700;
+  --type-body-m-size: clamp(14px, 13.6667px + 0.0926vw, 15px);
+  --type-body-m-line-height: 1.33;
+  --type-body-m-weight: 400;
+  --type-body-s-size: 13px;
+  --type-body-s-line-height: 1.23;
+  --type-body-s-weight: 400;
+  --type-body-s-medium-size: 13px;
+  --type-body-s-medium-line-height: 1.23;
+  --type-body-s-medium-weight: 500;
+  --type-button-size: 16px;
+  --type-button-line-height: 1.5;
+  --type-button-weight: 800;
+  --type-button-s-size: 14px;
+  --type-button-s-line-height: 1.43;
+  --type-button-s-weight: 700;
+  --type-caption-size: 12px;
+  --type-caption-line-height: 1.33;
+  --type-caption-weight: 400;
+  --type-caption-display-size: 12px;
+  --type-caption-display-line-height: 1.33;
+  --type-caption-display-weight: 400;
+  --type-card-title-size: 15px;
+  --type-card-title-line-height: 1.33;
+  --type-card-title-weight: 700;
+  --type-display-size: clamp(24px, 20.6667px + 0.9259vw, 34px);
+  --type-display-line-height: 1.18;
+  --type-display-weight: 600;
+  --type-h3-size: clamp(18px, 17.3333px + 0.1852vw, 20px);
+  --type-h3-line-height: 1.2;
+  --type-h3-weight: 500;
+  --type-h4-size: 14px;
+  --type-h4-line-height: 1.43;
+  --type-h4-weight: 500;
+  --type-label-size: 12px;
+  --type-label-line-height: 1.33;
+  --type-label-weight: 500;
+  --type-lead-size: clamp(14px, 13.3333px + 0.1852vw, 16px);
+  --type-lead-line-height: 1.5;
+  --type-lead-weight: 400;
+  --type-nav-link-size: 15px;
+  --type-nav-link-line-height: 1.33;
+  --type-nav-link-weight: 700;
+  --type-stat-l-size: clamp(48px, 42.6667px + 1.4815vw, 64px);
+  --type-stat-l-line-height: 1;
+  --type-stat-l-weight: 500;
+  --type-stat-unit-size: clamp(20px, 18.6667px + 0.3704vw, 24px);
+  --type-stat-unit-line-height: 1;
+  --type-stat-unit-weight: 700;
+  --type-stat-xl-size: clamp(64px, 55.3333px + 2.4074vw, 90px);
+  --type-stat-xl-line-height: 0.98;
+  --type-stat-xl-weight: 600;
+  --type-step-number-size: 14px;
+  --type-step-number-line-height: 1.14;
+  --type-step-number-weight: 600;
+}
+
+@media (width < 768px) {
+  :root {
+    --type-body-m-line-height: 1.43;
+    --type-body-s-line-height: 1.54;
+    --type-body-s-medium-line-height: 1.54;
+    --type-display-line-height: 1.33;
+    --type-h3-line-height: 1.33;
+    --type-lead-line-height: 1.43;
+    --type-stat-xl-line-height: 1;
+  }
+}
+
+@theme static {
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-4: 4px;
+  --radius-48: 48px;
+  --radius-8: 8px;
+  --shadow-card: -3px 5px 19px 0px #00000033;
+}
+
+@theme inline {
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-pressed: var(--accent-blue-pressed);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-yellow-hover: var(--accent-yellow-hover);
+  --color-accent-yellow-pressed: var(--accent-yellow-pressed);
+  --color-bg-glass: var(--bg-glass);
+  --color-bg-navy: var(--bg-navy);
+  --color-bg-navy-glass: var(--bg-navy-glass);
+  --color-bg-navy-raised: var(--bg-navy-raised);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-white: var(--bg-white);
+  --color-border-subtle: var(--border-subtle);
+  --spacing-block-gap: var(--layout-block-gap);
+  --spacing-container-padding: var(--layout-container-padding);
+  --spacing-grid-gutter: var(--layout-grid-gutter);
+  --spacing-page-width: var(--layout-page-width);
+  --spacing-panel-padding: var(--layout-panel-padding);
+  --spacing-section-gap: var(--layout-section-gap);
+  --spacing-wide-padding: var(--layout-wide-padding);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+}
+
+@utility type-author {
+  font-family: var(--font-sans);
+  font-size: var(--type-author-size);
+  line-height: var(--type-author-line-height);
+  font-weight: var(--type-author-weight);
+}
+@utility type-body-m {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-m-size);
+  line-height: var(--type-body-m-line-height);
+  font-weight: var(--type-body-m-weight);
+}
+@utility type-body-s {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s-size);
+  line-height: var(--type-body-s-line-height);
+  font-weight: var(--type-body-s-weight);
+}
+@utility type-body-s-medium {
+  font-family: var(--font-sans);
+  font-size: var(--type-body-s-medium-size);
+  line-height: var(--type-body-s-medium-line-height);
+  font-weight: var(--type-body-s-medium-weight);
+}
+@utility type-button {
+  font-family: var(--font-sans);
+  font-size: var(--type-button-size);
+  line-height: var(--type-button-line-height);
+  font-weight: var(--type-button-weight);
+}
+@utility type-button-s {
+  font-family: var(--font-sans);
+  font-size: var(--type-button-s-size);
+  line-height: var(--type-button-s-line-height);
+  font-weight: var(--type-button-s-weight);
+}
+@utility type-caption {
+  font-family: var(--font-sans);
+  font-size: var(--type-caption-size);
+  line-height: var(--type-caption-line-height);
+  font-weight: var(--type-caption-weight);
+}
+@utility type-caption-display {
+  font-family: var(--font-display);
+  font-size: var(--type-caption-display-size);
+  line-height: var(--type-caption-display-line-height);
+  font-weight: var(--type-caption-display-weight);
+}
+@utility type-card-title {
+  font-family: var(--font-sans);
+  font-size: var(--type-card-title-size);
+  line-height: var(--type-card-title-line-height);
+  font-weight: var(--type-card-title-weight);
+}
+@utility type-display {
+  font-family: var(--font-display);
+  font-size: var(--type-display-size);
+  line-height: var(--type-display-line-height);
+  font-weight: var(--type-display-weight);
+}
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line-height);
+  font-weight: var(--type-h3-weight);
+}
+@utility type-h4 {
+  font-family: var(--font-display);
+  font-size: var(--type-h4-size);
+  line-height: var(--type-h4-line-height);
+  font-weight: var(--type-h4-weight);
+}
+@utility type-label {
+  font-family: var(--font-display);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line-height);
+  font-weight: var(--type-label-weight);
+}
+@utility type-lead {
+  font-family: var(--font-display);
+  font-size: var(--type-lead-size);
+  line-height: var(--type-lead-line-height);
+  font-weight: var(--type-lead-weight);
+}
+@utility type-nav-link {
+  font-family: var(--font-sans);
+  font-size: var(--type-nav-link-size);
+  line-height: var(--type-nav-link-line-height);
+  font-weight: var(--type-nav-link-weight);
+}
+@utility type-stat-l {
+  font-family: var(--font-display);
+  font-size: var(--type-stat-l-size);
+  line-height: var(--type-stat-l-line-height);
+  font-weight: var(--type-stat-l-weight);
+}
+@utility type-stat-unit {
+  font-family: var(--font-display);
+  font-size: var(--type-stat-unit-size);
+  line-height: var(--type-stat-unit-line-height);
+  font-weight: var(--type-stat-unit-weight);
+}
+@utility type-stat-xl {
+  font-family: var(--font-display);
+  font-size: var(--type-stat-xl-size);
+  line-height: var(--type-stat-xl-line-height);
+  font-weight: var(--type-stat-xl-weight);
+}
+@utility type-step-number {
+  font-family: var(--font-display);
+  font-size: var(--type-step-number-size);
+  line-height: var(--type-step-number-line-height);
+  font-weight: var(--type-step-number-weight);
+}
