@@ -15,7 +15,8 @@ const nextConfig: NextConfig = {
         trailingSlash: true,
       }
     : { output: 'standalone' }),
-  images: { unoptimized: staticExport },
+  // Фото в public уже сжаты (WebP 85, DESIGN.md §9) — пережимать мягче стандартных 75.
+  images: { unoptimized: staticExport, qualities: [75, 90] },
 }
 
 export default nextConfig

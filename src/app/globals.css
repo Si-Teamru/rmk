@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @import '../styles/tokens.css';
 
+/* Предел ширины содержимого на больших экранах (макет 1440; до 1920 вёрстка тянется, шире — растут поля).
+   Фоны секций при этом на всю ширину. Класс max-w-page. */
+@theme {
+  --container-page: 1920px;
+}
+
 @theme inline {
   --font-sans: var(--font-hauora), system-ui, sans-serif;
   --font-display: var(--font-unbounded), system-ui, sans-serif;

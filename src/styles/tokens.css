@@ -21,12 +21,12 @@
   --text-secondary: #012149e5;
 
   /* Раскладка: 360 → 1440 */
-  --layout-block-gap: clamp(24px, 16px + 2.2222vw, 48px);
+  --layout-block-gap: clamp(32px, 26.6667px + 1.4815vw, 48px);
   --layout-container-padding: clamp(16px, -8px + 6.6667vw, 88px);
-  --layout-grid-gutter: clamp(16px, 13.3333px + 0.7407vw, 24px);
+  --layout-grid-gutter: 24px;
   --layout-page-width: clamp(360px, 0px + 100vw, 1440px);
   --layout-panel-padding: clamp(16px, 5.3333px + 2.963vw, 48px);
-  --layout-section-gap: clamp(56px, 48px + 2.2222vw, 80px);
+  --layout-section-gap: clamp(64px, 58.6667px + 1.4815vw, 80px);
   --layout-wide-padding: clamp(8px, -2.6667px + 2.963vw, 40px);
 
   /* Типографика */

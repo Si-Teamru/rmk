@@ -1,5 +1,6 @@
 /**
  * Шапка: Header / Desktop 3014:342 (от 1280) и Header / Mobile 3019:507 (меньше 1280: меню в шапку не влезает).
+ * Закреплена при прокрутке — Header Bar 3045:439, линия Pinned в StickyHeader.
  * Додумано: открытое мобильное меню не нарисовано — временное, MobileMenu.tsx.
  */
 import { home } from '@/data/home'
@@ -7,13 +8,14 @@ import { asset } from '@/lib/asset'
 
 import { Icon } from '../ui'
 import { MobileMenu } from './MobileMenu'
+import { StickyHeader } from './StickyHeader'
 
 const { nav, phone, signUp } = home.header
 
 export function Header() {
   return (
-    <header className="px-wide-padding py-1 xl:pt-3 xl:pb-2">
-      <div className="flex h-14 items-center justify-between gap-4">
+    <StickyHeader className="sticky top-0 z-50 bg-bg-white py-1 xl:pt-3 xl:pb-2">
+      <div className="mx-auto flex h-14 max-w-page items-center justify-between gap-4 px-wide-padding">
         <a href={asset('/')} className="shrink-0 rounded-4">
           {/* eslint-disable-next-line @next/next/no-img-element -- SVG логотипа, оптимизация не нужна */}
           <img
@@ -65,6 +67,6 @@ export function Header() {
       </div>
 
       <MobileMenu />
-    </header>
+    </StickyHeader>
   )
 }

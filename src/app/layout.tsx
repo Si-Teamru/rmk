@@ -15,7 +15,10 @@ export const viewport: Viewport = { colorScheme: 'light' }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${hauora.variable} ${unbounded.variable}`}>
+    <html
+      lang="ru"
+      className={`${hauora.variable} ${unbounded.variable} scroll-pt-16 xl:scroll-pt-19`}
+    >
       <body>{children}</body>
     </html>
   )

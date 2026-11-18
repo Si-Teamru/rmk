@@ -7,7 +7,7 @@ import { asset } from '@/lib/asset'
 
 export function Media() {
   return (
-    <section className="flex flex-col items-center gap-3 px-container-padding pt-5 pb-6 md:flex-row md:justify-end md:gap-2 md:pt-4 md:pb-8">
+    <section className="mx-auto flex max-w-page flex-col items-center gap-3 px-container-padding pt-5 pb-6 md:flex-row md:justify-end md:gap-2 md:pt-4 md:pb-8">
       <p className="type-caption-display">{home.media.caption}</p>
       {/* eslint-disable-next-line @next/next/no-img-element -- SVG, оптимизация не нужна */}
       <img
